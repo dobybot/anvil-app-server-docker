@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:10
+    volumes:
+      - ./docker-volumes/postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: <YOUR_DATABASE_PASSWORD>
+    ports:
+      - 5432:5432
+
+
+  app:
+    build: .
+    depends_on:
+      - db
+    volumes:
+      - ./docker-volumes/anvil-data:/anvil-data
+      - ./apps:/apps
+    ports:
+      - 3030:3030
+    command: >
+      anvil-app-server 
+      --app <YOUR_APP_NAME> 
+      --auto-migrate
+      --data-dir /anvil-data 
+      --database "jdbc:postgresql://db/postgres?user=postgres&password=<YOUR_DATABASE_PASSWORD>"
+      --dep-id C6ZZPAPN4YYF5NVJ=anvil_extras 
+      --google-client-id <YOUR_GOOGLE_CLIENT_ID>
+      --google-client-secret <YOUR_GOOGLE_CLIENT_SECRET>
+      --origin http://127.0.0.1:3030 
