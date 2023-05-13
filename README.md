@@ -17,8 +17,8 @@
 
 ## 2. Clone anvil apps into app folder
 ```bash
-git clone -c "core.sshCommand=ssh -i anvil_id_rsa -F /dev/null" ssh://dobybot%40gmail.com@anvil.works:2222/ASA43J5YFLL4XGWM.git apps/MYDBBV2
-git clone -c "core.sshCommand=ssh -i anvil_id_rsa -F /dev/null" ssh://dobybot%40gmail.com@anvil.works:2222/4IFZDSAEF2YQXDQ2.git apps/anvil_extras
+git clone -c "core.sshCommand=ssh -i </path/to/anvil_id_rsa> -F /dev/null" ssh://dobybot%40gmail.com@anvil.works:2222/ASA43J5YFLL4XGWM.git apps/MYDBBV2
+git clone -c "core.sshCommand=ssh -i </path/to/anvil_id_rsa> -F /dev/null" ssh://dobybot%40gmail.com@anvil.works:2222/4IFZDSAEF2YQXDQ2.git apps/anvil_extras
 
 # or
 GIT_SSH_COMMAND='ssh -i anvil_id_rsa -o IdentitiesOnly=yes' git clone ssh://dobybot%40gmail.com@anvil.works:2222/ASA43J5YFLL4XGWM.git apps/MYDBBV2
